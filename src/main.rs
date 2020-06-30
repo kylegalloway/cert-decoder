@@ -89,4 +89,17 @@ mod test {
             "Error: path given as argument is not a regular file, it must be a path to a certificate!"
         )
     }
+
+    #[test]
+    fn should_succeed() {
+        // arrange
+        let args = vec![String::from("a-file")];
+        let validator = FakeValidator { is_file: true };
+
+        // act
+        let result = execute(validator, args);
+
+        // assert
+        assert!(result.is_ok());
+    }
 }
